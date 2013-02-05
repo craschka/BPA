@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BenzinPreisAlarm</string>
+    <string name="preference_file_name">com.raschka.android.bpa.preference_file</string>
+    <string name="benzinsorte">benzinsorte</string>
+    <string-array name="benzinsorten">
+        <item></item>
+        <item>E10</item>
+        <item>E5</item>
+        <item>Diesel</item>
+        <item>Benzin</item>
+        <item>Super plus</item>
+    </string-array>
 </resources>

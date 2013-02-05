@@ -1,6 +1,5 @@
 package com.raschka.android.bpa.domain;
 
-import android.content.Context;
 import android.location.*;
 import com.raschka.android.bpa.GeocoderProvider;
 import com.raschka.android.bpa.Postleitzahl;
@@ -19,8 +18,7 @@ public class BestProviderLocationFinder implements LocationFinder {
     }
 
     public Postleitzahl findLastKnownPostleitzahl() {
-        String best = locationManager.getBestProvider(new Criteria(), true);
-        Location location = locationManager.getLastKnownLocation(best);
+        Location location = findLastKnownPosition();
         Address address = null;
         try {
             address = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1).get(0);
@@ -28,5 +26,10 @@ public class BestProviderLocationFinder implements LocationFinder {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         return new Postleitzahl(Integer.parseInt(address.getPostalCode()));
+    }
+
+    public Location findLastKnownPosition() {
+        String best = locationManager.getBestProvider(new Criteria(), true);
+        return locationManager.getLastKnownLocation(best);
     }
 }

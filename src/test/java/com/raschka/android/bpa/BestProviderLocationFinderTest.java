@@ -16,4 +16,8 @@ public class BestProviderLocationFinderTest extends TestCase {
     public void setUp() throws Exception {
         //sut = new BestProviderLocationFinder(locationManager,geocoderProvider);
     }
+
+    public void testSomething(){
+        assertTrue(true);
+    }
 }
