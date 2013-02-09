@@ -4,7 +4,7 @@ import com.google.api.client.util.Key;
 
 import java.io.Serializable;
 
-public class Place implements Serializable{
+public class Place implements Serializable, Tankstelle{
     @Key
     public String id;
 
@@ -32,6 +32,22 @@ public class Place implements Serializable{
     @Override
     public String toString() {
         return name + " - " + id + " - " + reference;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public String adresse() {
+        return vicinity;
+    }
+
+    public Location location() {
+        return geometry.location;
+    }
+
+    public Tankstelle tankstelle() {
+        return this;
     }
 
     public static class Geometry implements Serializable

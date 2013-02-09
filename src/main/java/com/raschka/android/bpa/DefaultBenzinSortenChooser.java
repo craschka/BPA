@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.R;
+import com.raschka.android.bpa.domain.BenzinSorte;
 import roboguice.inject.InjectView;
 import roboguice.util.Strings;
 
@@ -40,7 +41,11 @@ public class DefaultBenzinSortenChooser implements AdapterView.OnItemSelectedLis
         }
     }
 
-    private String defaultSorte() {
+    public BenzinSorte getChoosenBenzinSorte(){
+        return BenzinSorte.from(defaultSorte());
+    }
+
+    public String defaultSorte() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("prefs_file", Context.MODE_PRIVATE);
         return sharedPreferences.getString(context.getString(R.string.benzinsorte),null);
     }

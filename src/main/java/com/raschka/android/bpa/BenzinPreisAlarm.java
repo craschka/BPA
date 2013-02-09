@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.R;
-import com.raschka.android.bpa.domain.LoadPlaces;
-import com.raschka.android.bpa.domain.LocationFinder;
-import com.raschka.android.bpa.domain.Place;
+import com.raschka.android.bpa.domain.*;
+import com.raschka.android.bpa.parsing.Downloader;
+import com.raschka.android.bpa.parsing.HtmlParser;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -37,10 +37,26 @@ public class BenzinPreisAlarm extends RoboActivity  {
     @InjectView(R.id.deleteSettings)
     private Button deleteSettings;
 
+    @InjectView(R.id.start)
+    private Button start;
+
     @Inject
     private DefaultBenzinSortenChooser defaultBenzinSortenChooser;
 
     private boolean first = true;
+
+    @Inject
+    private Downloader downloader;
+
+    @Inject
+    private HtmlParser htmlParser;
+
+
+    @Inject
+    private PreisService preisService;
+
+    @Inject
+    private TankstellenFinder tankstellenFinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +71,37 @@ public class BenzinPreisAlarm extends RoboActivity  {
 
         defaultBenzinSortenChooser.chooseBenzinsorte();
 
-        LoadPlaces loadPlaces = new LoadPlaces();
+        start.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                start();
+            }
+        });
+
+
+
+    }
+
+    private void start(){
         Location location = locationFinder.findLastKnownPosition();
-        List<Place> tankstellen = loadPlaces.doInBackground(location);
-
-        for (Place place : tankstellen) {
-            log("\n"+place.name+"\n"+place.vicinity+"\n");
+        if (location == null){
+            location = emulateLocationAs40237();
         }
+        List<Tankstelle> tankstellen = tankstellenFinder.findeTankstellen(location);
+        List<Preis> preise = preisService.readPreise(tankstellen,defaultBenzinSortenChooser.getChoosenBenzinSorte());
 
+
+        for (Preis preis : preise) {
+            log("\n"+preis.tankstelle().name()+"\n"+preis.tankstelle().adresse()+"\n");
+            log("Aktueller Preis: "+ ((double)preis.value()/1000) + " Euro\n");
+            log("Datum: " + preis.datum() + "\n");
+        }
+    }
+
+    private Location emulateLocationAs40237() {
+        Location location = new Location("network");
+        location.setLatitude(51.23473);
+        location.setLongitude(6.804142);
+        return location;
     }
 
     private void deleteAllSettings() {
