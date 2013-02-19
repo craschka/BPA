@@ -40,6 +40,12 @@ public class BenzinPreisAlarm extends RoboActivity  {
     @InjectView(R.id.start)
     private Button start;
 
+    @InjectView(R.id.startmoers)
+    private Button startmoers;
+
+    @InjectView(R.id.startD)
+    private Button startD;
+
     @Inject
     private DefaultBenzinSortenChooser defaultBenzinSortenChooser;
 
@@ -60,6 +66,7 @@ public class BenzinPreisAlarm extends RoboActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
         super.onCreate(savedInstanceState);
 
         deleteSettings.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +83,20 @@ public class BenzinPreisAlarm extends RoboActivity  {
                 start();
             }
         });
+        startmoers.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startMoers();
+            }
+        });
+        startD.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startD();
+            }
+        });
 
+        } catch (Exception e){
+            log(e.getLocalizedMessage());
+        }
 
 
     }
@@ -86,6 +106,18 @@ public class BenzinPreisAlarm extends RoboActivity  {
         if (location == null){
             location = emulateLocationAs40237();
         }
+        printPreise(location);
+    }
+
+    private void startD(){
+        printPreise(emulateLocationAs40237());
+    }
+
+    private void startMoers(){
+        printPreise(emulateLocationAsMoers());
+    }
+
+    private void printPreise(Location location) {
         List<Tankstelle> tankstellen = tankstellenFinder.findeTankstellen(location);
         List<Preis> preise = preisService.readPreise(tankstellen,defaultBenzinSortenChooser.getChoosenBenzinSorte());
 
@@ -103,6 +135,15 @@ public class BenzinPreisAlarm extends RoboActivity  {
         location.setLongitude(6.804142);
         return location;
     }
+
+    private Location emulateLocationAsMoers() {
+        Location location = new Location("network");
+        location.setLatitude(51.464756);
+        location.setLongitude(6.61377);
+        return location;
+    }
+
+
 
     private void deleteAllSettings() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("prefs_file", Context.MODE_PRIVATE);

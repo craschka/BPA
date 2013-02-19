@@ -18,6 +18,14 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Start"/>
+    <Button android:id="@+id/startmoers"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Moers"/>
+    <Button android:id="@+id/startD"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="DDorf"/>
     <ScrollView android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">

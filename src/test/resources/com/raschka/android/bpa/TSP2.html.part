@@ -1,0 +1,68 @@
+﻿<!-- bo Ergebnistabelle -->
+<div class="frn_suchErgHead" style=""><strong>Angebote f&uuml;r Kraftstoff Super in "40233"</strong></div>
+<table class="frn_benzinErg" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th class="colErg1 frn_borderTopHelp">&nbsp;</th>
+    <th class="colErg2 frn_borderTopHelp">&nbsp;</th>
+    <th class="colErg3 frn_borderTopHelp">&nbsp;</th>
+  </tr>
+  <tr>
+    <th class="colErg1">Tankstelle</th>
+    <th class="colErg2">&euro;/l (Super)</th>
+    <th class="colErg3">Gemeldet</th>
+  </tr>
+  <tr class="">
+    <td class="colErg1">
+      <a href="javascript:details('7251','Super','40233', '1' )">
+        <strong>Shell</strong><br>
+        Ronsdorfer Str. 95<br>
+        40233 Düsseldorf<br>
+        <div class="frn_more">Details</div>
+      </a>
+    </td>
+    <td class="colErg2">
+      <strong>1.599 Euro</strong>
+    </td>
+    <td class="colErg3">
+      12.02.2013<br>
+      13:20:10
+    </td>
+  </tr>
+  <tr class="bg">
+    <td class="colErg1">
+      <a href="javascript:details('31309','Super','40233', '1' )">
+        <strong>TOTAL</strong><br>
+        Höherweg 202<br>
+        40233 Düsseldorf<br>
+        <div class="frn_more">Details</div>
+      </a>
+    </td>
+    <td class="colErg2">
+      <strong>1.639 Euro</strong>
+    </td>
+    <td class="colErg3">
+      12.02.2013<br>
+      10:58:08
+    </td>
+  </tr>
+  <tr class="">
+    <td class="colErg1">
+      <a href="javascript:details('17951','Super','40233', '1' )">
+        <strong>SVG</strong><br>
+        Albertstr. 31<br>
+        40233 Düsseldorf<br>
+        <div class="frn_more">Details</div>
+      </a>
+    </td>
+    <td class="colErg2">
+      <strong>1.549 Euro</strong>
+    </td>
+    <td class="colErg3">
+      08.02.2013<br>
+      14:16:29
+    </td>
+  </tr>
+  <tr>
+  </tr>
+</tbody></table>
+<!-- eo Ergebnistabelle -->
