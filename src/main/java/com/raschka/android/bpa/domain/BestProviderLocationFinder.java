@@ -23,7 +23,7 @@ public class BestProviderLocationFinder implements LocationFinder {
         try {
             address = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1).get(0);
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            throw new RuntimeException(e);
         }
         return new Postleitzahl(Integer.parseInt(address.getPostalCode()));
     }

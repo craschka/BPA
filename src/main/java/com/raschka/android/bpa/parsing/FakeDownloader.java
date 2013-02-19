@@ -18,8 +18,7 @@ public class FakeDownloader implements Downloader {
         try {
             return IOUtils.toString(context.getResources().openRawResource(R.raw.tsp2));
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            throw new RuntimeException(e);
         }
-        return "";
     }
 }

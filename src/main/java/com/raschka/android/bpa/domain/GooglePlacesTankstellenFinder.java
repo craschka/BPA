@@ -1,8 +1,10 @@
 package com.raschka.android.bpa.domain;
 
 import android.location.Location;
-import android.util.Log;
-import com.google.api.client.http.*;
+import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestFactory;
+import com.google.api.client.http.HttpResponseException;
 import com.raschka.android.bpa.parsing.RequestFactoryProvider;
 
 import javax.inject.Inject;
@@ -50,8 +52,7 @@ public class GooglePlacesTankstellenFinder implements TankstellenFinder {
             return request.execute().parseAs(PlacesList.class);
 
         } catch (HttpResponseException e) {
-            Log.e("Error:", e.getMessage());
-            return new PlacesList();
+            throw new RuntimeException(e);
         }
     }
 }
