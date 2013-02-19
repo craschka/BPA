@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FakePreisService implements PreisService {
+public class ManuellGemeldeterPreisService implements PreisService {
     @Inject
     private HtmlParser htmlParser;
 

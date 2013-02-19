@@ -19,7 +19,7 @@ public class BestProviderLocationFinder implements LocationFinder {
 
     public Postleitzahl findLastKnownPostleitzahl() {
         Location location = findLastKnownPosition();
-        Address address = null;
+        Address address;
         try {
             address = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1).get(0);
         } catch (IOException e) {

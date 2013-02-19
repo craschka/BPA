@@ -7,7 +7,7 @@ import com.raschka.android.bpa.parsing.*;
 public class BPAModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(PreisService.class).to(FakePreisService.class);
+        bind(PreisService.class).to(ManuellGemeldeterPreisService.class);
         bind(LocationFinder.class).to(BestProviderLocationFinder.class);
         //bind(Downloader.class).to(FakeDownloader.class);
         bind(Downloader.class).to(HttpDownloader.class);
